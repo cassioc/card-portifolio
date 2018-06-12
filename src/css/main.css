@@ -1,0 +1,50 @@
+.header-animado {
+  background-color: #64a59a;
+  height: 300px; }
+
+.header-nav {
+  background-color: #84b8af; }
+  .js .header-nav {
+    height: 40px; }
+    .js .header-nav .container {
+      height: 100%;
+      padding-right: 0px; }
+  .header-nav__logo {
+    display: inline-block;
+    max-width: 350px;
+    height: 40px;
+    position: relative;
+    margin-top: 10px; }
+    .header-nav__logo img {
+      max-width: 100%;
+      height: 100%; }
+  .header-nav__hamburgger {
+    display: none; }
+    .js .header-nav__hamburgger {
+      display: inline-block;
+      float: right;
+      height: 100%;
+      border: none;
+      background: transparent;
+      color: white;
+      font-size: 2em;
+      padding: 0 .5em; }
+      .js .header-nav__hamburgger:hover, .js .header-nav__hamburgger:focus {
+        background: #74aea5; }
+  .header-nav__menu {
+    list-style: none;
+    margin-right: 0;
+    padding: 0; }
+    .header-nav__menu a {
+      color: white;
+      display: block;
+      font-size: 1.5em;
+      border-top: 1px solid #5a9b90;
+      padding: 0.7em;
+      text-decoration: none; }
+      .header-nav__menu a:hover {
+        background-color: #56948a; }
+    .js .header-nav__menu {
+      display: none; }
+    .menu-openned .header-nav__menu {
+      display: block; }
