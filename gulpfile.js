@@ -35,8 +35,8 @@ gulp.task('server', function(){
         }
     })
 
-    // Monitoramento do CSS com reload no browser
-    gulp.watch('src/css/*.css').on('change', browserSync.reload)
+    // Monitoramento o diretorio 'src' e faz reload no browser
+    gulp.watch('src/**/*').on('change', browserSync.reload)
     
     // Monitoramento do SASS
     gulp.watch('./src/sass/**/*.scss', ['sass'])
