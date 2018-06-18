@@ -1,6 +1,26 @@
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
+    include = require('gulp-file-include'),
+    clean = require('gulp-clean'),
     browserSync = require('browser-sync');
+
+//==== GULP CLEAN ====//
+gulp.task('clean', function(){
+    return gulp.src('dist')
+        .pipe(clean());
+})
+
+
+gulp.task('copy', ['clean'], function(){
+    gulp.src([
+            'src/components/**/*',
+            'src/css/**/*',
+            'src/js/**/*',
+            'src/img/**/*'], 
+            {"base": "src"})
+        .pipe(gulp.dest('dist'))
+})
+
 
 //==== SASS ====//
 
@@ -11,9 +31,18 @@ gulp.task('sass', function(){
         // Tubulacao
         .pipe(sass())
         // Destino
-        .pipe(gulp.dest('./src/css/'));
+        .pipe(gulp.dest('./dist/css/'));
 })
 
+
+//==== GULP FILE INCLUDE ====//
+
+// Task oara include no header e footer
+gulp.task('html', function(){
+    return gulp.src('./src/index.html')
+        .pipe(include())
+        .pipe(gulp.dest('./dist/'));
+})
 
 // Task para monitoramento do SASS
 // gulp.task('listen', function(){
@@ -25,19 +54,20 @@ gulp.task('sass', function(){
 //==== BROWSER SYNC ====//
 
 // Task para iniciar um servidor localhost
-gulp.task('server', function(){
+gulp.task('server', ['html'], function(){
     // Modulo.metodo
     browserSync.init({
         // Objeto
         server: {
             // Diretorio a ser servido
-            baseDir: 'src'
+            baseDir: 'dist'
         }
     })
 
     // Monitoramento o diretorio 'src' e faz reload no browser
-    gulp.watch('src/**/*').on('change', browserSync.reload)
+    gulp.watch('./dist/**/*').on('change', browserSync.reload)
     
     // Monitoramento do SASS
     gulp.watch('./src/sass/**/*.scss', ['sass'])
+    gulp.watch('./src/**/*.html', ['html'])
 })

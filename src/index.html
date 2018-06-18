@@ -19,24 +19,8 @@
     <title>Cassio Castro - Portifólio</title>
 </head>
 <body>
-    <nav class="header-nav">
-        <div class="container">
-            <a href="index.html" class="header-nav__logo">
-                <img src="img/logo.svg" alt="Logotipo Portifólio - Cassio Castro">
-            </a>
-            <button aria-controls="mainMenu" class="header-nav__hamburgger" type="button" aria-expanded="false">
-                <div class="header-nav__hamburggerParties">
-                    <span class="sr-only">Menu</span>
-                    <i class="fa fa-bars" aria-hidden="true"></i>
-                </div>
-            </button>
-            <ul class="header-nav__menu" id="mainMenu" aria-expanded="false">
-                <li><a href="#">Portifolio</a></li>
-                <li><a href="#">Sobre mim</a></li>
-                <li><a href="#">Contato</a></li>
-            </ul>
-        </div>
-    </nav>
+
+@@include('./inc/nav.html')
     
     <div class="jumbotron header-animado">
         <div class="container">
@@ -59,62 +43,36 @@
                 <h2>Últimos trabalhos</h2>
             </div>
             
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="thumbnail card-portifolio">
-                    <h3 class="card-portifolio__title">Lab: Arquiteta e Design</h3>
-                    <div class="card-portifolio__imagem">
-                        <img src="img/portfolio/01.jpg" alt="Portifólio - Site Arquiteta e Design">
-                    </div>
-                    <div class="caption card-portifolio__caption">
-                        <p class="card-portifolio__text">Projeto desenvolvido com foco no estudo de HTML5, CSS3, Js, Bootstrap e JQuery</p>
-                    </div>
-                    <a href="https://sitearquiteta.herokuapp.com/index.html" class="card-portifolio__btn btn btn-primary" role="button">Ver +</a>
-                </div>
-            </div>
-            
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="thumbnail card-portifolio">
-                    <h3 class="card-portifolio__title">Lab: Projeto em desenvolvimento</h3>
-                        <div class="card-portifolio__imagem">
-                            <img src="img/portfolio/02.jpg" alt="Lab: Projeto em desenvolvimento">
-                        </div>
-                        <div class="caption card-portifolio__caption">
-                            <p class="card-portifolio__text">Projeto em desenvolvimento</p>
-                        </div>
-                    <a href="#" class="card-portifolio__btn btn btn-primary" role="button">Ver +</a>
-                </div>
-            </div>
-            
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="thumbnail card-portifolio">
-                    <h3 class="card-portifolio__title">Lab: Projeto em desenvolvimento</h3>
-                    <div class="card-portifolio__imagem">
-                        <img src="img/portfolio/03.jpg" alt="Lab: Projeto em desenvolvimento">
-                    </div>
-                    <div class="caption card-portifolio__caption">
-                        <p class="card-portifolio__text">Projeto em desenvolvimento</p>
-                    </div>
-                    <a href="#" class="card-portifolio__btn btn btn-primary" role="button">Ver +</a>
-                </div>
-            </div>
+            @@loop('./inc/card-portifolio.html', [
+                {
+                    "titulo": "LAB: Arquiteta e Design",
+                    "img": "img/portfolio/01.jpg",
+                    "text": "Projeto desenvolvido com foco no estudo em HTML5, CSS3, Js, Bootstrap e JQuery",
+                    "link": "https://sitearquiteta.herokuapp.com/index.html",
+                    "alt": "Portifólio - Site Arquiteta e Design"
+                },
+                {
+                    "titulo": "LAB: Em desenvolvimento",
+                    "img": "img/portfolio/02.jpg",
+                    "text": "Portifólio - Projeto em desenvolvimento",
+                    "link": "#",
+                    "alt": "Portifólio - Projeto em desenvolvimento"
+                },
+                {
+                    "titulo": "LAB: Em desenvolvimento",
+                    "img": "img/portfolio/03.jpg",
+                    "text": "Portifólio - Projeto em desenvolvimento",
+                    "link": "#",
+                    "alt": "Portifólio - Projeto em desenvolvimento"
+                }
+            ])
             
         </div> <!-- row -->
         <hr>
         
     </div> <!-- container -->
     
-    <footer class="card-portifolio__footer">
-        <div class="container">
-            <p class="text-left">Social:</p>
-            <ul class="card-portifolio__footer_ul list-inline pull-right">
-                <li class="card-portifolio__footer_ul_li"><a href="https://www.facebook.com/cassiocastro.ti" title="Ir para o Facebook de Cassio Castro" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook-f"></i></a></li>
-                <li class="card-portifolio__footer_ul_li"><a href="https://www.linkedin.com/in/cassiocastro/" title="Ir para o Instagram de Cassio Castro" class="btn-social btn-outline"><i class="fa fa-fw fa-instagram"></i></a></li>
-                <li class="card-portifolio__footer_ul_li"><a href="https://www.linkedin.com/in/cassiocastro/" title="Ir para o LinkedIn de Cassio Castro" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a></li>
-                <li class="card-portifolio__footer_ul_li"><a href="https://plus.google.com/+CassioCastro" title="Ir para o Google Plus de Cassio Castro" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a></li>
-                <li class="card-portifolio__footer_ul_li"><a href="mailto:cassiocastro.ti@gmail.com" title="Enviar um e-mail para Cassio Castro" class="btn-social btn-outline"><i class="fa fa-fw fa-at"></i></a></li>
-            </ul>
-        </div>
-    </footer>
+    @@include('./inc/footer.html')
     
     <script src="js/main.js"></script>
     <script src="js/menu.js"></script>
