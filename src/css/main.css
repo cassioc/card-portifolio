@@ -142,7 +142,15 @@ h1, h2, h3, h4, h5, h6, .title {
         float: right;
         height: 40px; }
         .header-nav__menu li {
-          display: inline-block; } }
+          display: inline-block; }
+          .header-nav__menu li a {
+            border-top: none;
+            transition: all .2s ease-in-out;
+            border-radius: 8px;
+            padding: 12px; }
+            .header-nav__menu li a:hover {
+              transform: translateY(0.5em);
+              box-shadow: 0 5px 15px -10px black; } }
 
 .card-portifolio {
   padding: 0;
