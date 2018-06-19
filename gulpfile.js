@@ -3,6 +3,7 @@ var gulp = require('gulp'),
     include = require('gulp-file-include'),
     clean = require('gulp-clean'),
     autoprefixer = require('gulp-autoprefixer'),
+    uncss = require('gulp-uncss'),
     browserSync = require('browser-sync');
 
 //==== GULP CLEAN ====//
@@ -52,11 +53,20 @@ gulp.task('html', function(){
 //     gulp.watch('./src/sass/**/*.scss', ['sass'])
 // })
 
+//==== UNCSS ====//
+gulp.task('uncss', ['html'], function(){
+    return gulp.src('./dist/components/**/*.css')
+            .pipe(uncss({
+                html: ['./dist/*.html']
+            }))
+            .pipe(gulp.dest('./dist/components/'))
+})
+
 
 //==== BROWSER SYNC ====//
 
 // Task para iniciar um servidor localhost
-gulp.task('server', ['html'], function(){
+gulp.task('server', ['uncss'], function(){
     // Modulo.metodo
     browserSync.init({
         // Objeto

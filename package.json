@@ -14,6 +14,7 @@
     "gulp-clean": "^0.4.0",
     "gulp-file-include": "^2.0.1",
     "gulp-sass": "^4.0.1",
+    "gulp-uncss": "^1.0.6",
     "mkdirp": "^0.5.1"
   },
   "scripts": {
