@@ -2,6 +2,7 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     include = require('gulp-file-include'),
     clean = require('gulp-clean'),
+    autoprefixer = require('gulp-autoprefixer'),
     browserSync = require('browser-sync');
 
 //==== GULP CLEAN ====//
@@ -30,6 +31,7 @@ gulp.task('sass', function(){
     gulp.src('./src/sass/**/*.scss')
         // Tubulacao
         .pipe(sass())
+        .pipe(autoprefixer())
         // Destino
         .pipe(gulp.dest('./dist/css/'));
 })

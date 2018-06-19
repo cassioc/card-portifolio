@@ -1,7 +1,8 @@
 input[type="text"],
 input[type="email"], textarea.form-control {
   margin-bottom: 25px;
-  transform: background .3s; }
+  -webkit-transform: background .3s;
+          transform: background .3s; }
   input:focus[type="text"],
   input:focus[type="email"], textarea.form-control:focus {
     background: whitesmoke; }
