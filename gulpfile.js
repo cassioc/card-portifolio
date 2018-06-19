@@ -4,6 +4,7 @@ var gulp = require('gulp'),
     clean = require('gulp-clean'),
     autoprefixer = require('gulp-autoprefixer'),
     uncss = require('gulp-uncss'),
+    imagemin = require('gulp-imagemin'),
     browserSync = require('browser-sync');
 
 //==== GULP CLEAN ====//
@@ -16,9 +17,7 @@ gulp.task('clean', function(){
 gulp.task('copy', ['clean'], function(){
     gulp.src([
             'src/components/**/*',
-            'src/css/**/*',
-            'src/js/**/*',
-            'src/img/**/*'], 
+            'src/js/**/*'], 
             {"base": "src"})
         .pipe(gulp.dest('dist'))
 })
@@ -40,33 +39,33 @@ gulp.task('sass', function(){
 
 //==== GULP FILE INCLUDE ====//
 
-// Task oara include no header e footer
+// Task para include no header e footer
 gulp.task('html', function(){
     return gulp.src('./src/**/*.html')
         .pipe(include())
         .pipe(gulp.dest('./dist/'));
 })
 
-// Task para monitoramento do SASS
-// gulp.task('listen', function(){
-//                 // PATH  - COMANDO A SER EXECUTADO 
-//     gulp.watch('./src/sass/**/*.scss', ['sass'])
-// })
-
 //==== UNCSS ====//
 gulp.task('uncss', ['html'], function(){
     return gulp.src('./dist/components/**/*.css')
-            .pipe(uncss({
-                html: ['./dist/*.html']
-            }))
-            .pipe(gulp.dest('./dist/components/'))
+    .pipe(uncss({
+        html: ['./dist/*.html']
+    }))
+    .pipe(gulp.dest('./dist/components/'))
+})
+
+gulp.task('imagemin', function(){
+    return gulp.src('./src/img/**/*')
+    .pipe(imagemin())
+    .pipe(gulp.dest('./dist/img/'))
 })
 
 
 //==== BROWSER SYNC ====//
 
 // Task para iniciar um servidor localhost
-gulp.task('server', ['uncss'], function(){
+gulp.task('server', ['uncss', 'imagemin', 'sass', 'copy'], function(){
     // Modulo.metodo
     browserSync.init({
         // Objeto
@@ -75,7 +74,7 @@ gulp.task('server', ['uncss'], function(){
             baseDir: 'dist'
         }
     })
-
+    
     // Monitoramento o diretorio 'src' e faz reload no browser
     gulp.watch('./dist/**/*').on('change', browserSync.reload)
     
@@ -83,3 +82,9 @@ gulp.task('server', ['uncss'], function(){
     gulp.watch('./src/sass/**/*.scss', ['sass'])
     gulp.watch('./src/**/*.html', ['html'])
 })
+
+// Task para monitoramento do SASS
+// gulp.task('listen', function(){
+//                 // PATH  - COMANDO A SER EXECUTADO 
+//     gulp.watch('./src/sass/**/*.scss', ['sass'])
+// })

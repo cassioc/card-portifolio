@@ -13,6 +13,7 @@
     "gulp-autoprefixer": "^5.0.0",
     "gulp-clean": "^0.4.0",
     "gulp-file-include": "^2.0.1",
+    "gulp-imagemin": "^4.1.0",
     "gulp-sass": "^4.0.1",
     "gulp-uncss": "^1.0.6",
     "mkdirp": "^0.5.1"
