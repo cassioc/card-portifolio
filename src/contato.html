@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Cassio Castro">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Importação do Bootstrap -->
+    <link href="components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Importação dos .css -->
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/contato.css" rel="stylesheet">
+
+    <!-- Importação da Font Awesome -->
+    <link href="components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    
+    <title>Cassio Castro - Portifólio</title>
+</head>
+<body>
+
+    @@include('./inc/nav.html')
+    
+    <div class="jumbotron header-animado">
+        <div class="container">
+            <p class="header-animado__title text-center">Vamos bater um papo?</p>
+            <h1 class="header-animado__subtitle text-center">Entre em contato que eu responderei o mais rápido possível</h1>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-8 col-lg-offset-2">
+
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="textNome">Nome</label>
+                        <input type="text" class="form-control" id="textNome" placeholder="Nome Completo">
+                    </div>
+                    <div class="form-group">
+                        <label for="textEmail">Email</label>
+                        <input type="email" class="form-control" id="textEmail" placeholder="Digite seu e-mail">
+                    </div>
+                    <div class="form-group">
+                        <label for="textMessage">Mensagem</label>
+                        <textarea class="form-control" id="textMessage" placeholder="Digite a mensagem que deseja me enviar"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-lg btn-success">Enviar</button>
+                    </div>
+                </form>
+
+            </div>            
+        </div> <!-- row -->
+        <hr>
+    </div> <!-- container -->
+    
+    @@include('./inc/footer.html')
+
+    <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
+
+</body>
+</html>

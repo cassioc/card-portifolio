@@ -1,0 +1,14 @@
+input[type="text"],
+input[type="email"], textarea.form-control {
+  margin-bottom: 25px;
+  transform: background .3s; }
+  input:focus[type="text"],
+  input:focus[type="email"], textarea.form-control:focus {
+    background: whitesmoke; }
+
+input[type="text"],
+input[type="email"] {
+  padding: 25px; }
+
+textarea.form-control {
+  height: 100px; }

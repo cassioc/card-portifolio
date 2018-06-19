@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Cassio Castro">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Importação do Bootstrap -->
+    <link href="components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Importação do main.css -->
+    <link href="css/main.css" rel="stylesheet">
+
+    <!-- Importação da Font Awesome -->
+    <link href="components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    
+    <title>Cassio Castro - Portifólio</title>
+</head>
+<body>
+
+@@include('./inc/nav.html')
+    
+    <div class="jumbotron header-animado">
+        <div class="container">
+            <p class="header-animado__title text-center">O que ando fazendo...</p>
+            <h1 class="header-animado__subtitle text-center">Veja alguns dos meus trabalhos</h1>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Últimos trabalhos</h2>
+            </div>
+            
+            @@loop('./inc/card-portifolio.html', [
+                {
+                    "titulo": "LAB: Arquiteta e Design",
+                    "img": "img/portfolio/01.jpg",
+                    "text": "Projeto desenvolvido com foco no estudo em HTML5, CSS3, Js, Bootstrap e JQuery",
+                    "link": "https://sitearquiteta.herokuapp.com/index.html",
+                    "alt": "Portifólio - Site Arquiteta e Design"
+                },
+                {
+                    "titulo": "LAB: Em desenvolvimento",
+                    "img": "img/portfolio/02.jpg",
+                    "text": "Projeto desenvolvido com foco no estudo em HTML5, CSS3, Js, Bootstrap e JQuery",
+                    "link": "#",
+                    "alt": "Portifólio - Projeto em desenvolvimento"
+                },
+                {
+                    "titulo": "LAB: Em desenvolvimento",
+                    "img": "img/portfolio/03.jpg",
+                    "text": "Projeto desenvolvido com foco no estudo em HTML5, CSS3, Js, Bootstrap e JQuery",
+                    "link": "#",
+                    "alt": "Portifólio - Projeto em desenvolvimento"
+                },
+                {
+                    "titulo": "LAB: Em desenvolvimento",
+                    "img": "img/portfolio/04.jpg",
+                    "text": "Projeto desenvolvido com foco no estudo em HTML5, CSS3, Js, Bootstrap e JQuery",
+                    "link": "#",
+                    "alt": "Portifólio - Projeto em desenvolvimento"
+                },
+                {
+                    "titulo": "LAB: Em desenvolvimento",
+                    "img": "img/portfolio/05.jpg",
+                    "text": "Projeto desenvolvido com foco no estudo em HTML5, CSS3, Js, Bootstrap e JQuery",
+                    "link": "#",
+                    "alt": "Portifólio - Projeto em desenvolvimento"
+                },
+                {
+                    "titulo": "LAB: Em desenvolvimento",
+                    "img": "img/portfolio/06.jpg",
+                    "text": "Projeto desenvolvido com foco no estudo em HTML5, CSS3, Js, Bootstrap e JQuery",
+                    "link": "#",
+                    "alt": "Portifólio - Projeto em desenvolvimento"
+                }
+            ])
+            
+        </div> <!-- row -->
+        <hr>
+        
+    </div> <!-- container -->
+    
+    @@include('./inc/footer.html')
+    
+    <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
+
+</body>
+</html>

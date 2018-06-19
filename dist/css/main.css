@@ -7,7 +7,7 @@ h1, h2, h3, h4, h5, h6, .title {
   background-color: #64a59a;
   padding-top: 96px;
   padding-bottom: 0;
-  margin-bottom: 0; }
+  margin-bottom: 32px; }
   .header-animado .header-animado__title {
     color: #00151a;
     font-size: 38px;
@@ -16,7 +16,8 @@ h1, h2, h3, h4, h5, h6, .title {
     color: white;
     font-size: 34px;
     font-weight: 300;
-    line-height: 1.5; }
+    line-height: 1.5;
+    margin-bottom: 2em; }
   .header-animado__ilustra {
     background-image: url(../img/cenario_all_960.png);
     height: 150px;
