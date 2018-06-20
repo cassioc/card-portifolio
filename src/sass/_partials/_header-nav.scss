@@ -5,7 +5,7 @@
         content: "";
         display: block;
         position: fixed;
-        top: 40px;
+        top: 50px;
         bottom: 0;
         left: 0;
         right: 0;
@@ -17,7 +17,7 @@
 
 .header-nav {
 
-    $h: 40px;
+    $h: 50px;
     $breakpoint: 680px;
 
     background-color: lighten($main-color, 10%);

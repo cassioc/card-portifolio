@@ -3,6 +3,10 @@
     color: white;
     padding: 1em 0;
 
+    .color-icon {
+        fill: white;
+    }
+
     &_ul {
         overflow: hidden;
         padding: 0;
@@ -16,8 +20,6 @@
             padding: 0;
 
             a {
-                font-size: 1.5em;
-                color: white;
                 display: block;
                 text-align: center;
             }

@@ -5,6 +5,10 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     uncss = require('gulp-uncss'),
     imagemin = require('gulp-imagemin'),
+    cssnano = require('gulp-cssnano'),
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglify'),
+    rename = require('gulp-rename'),
     browserSync = require('browser-sync');
 
 //==== GULP CLEAN ====//
@@ -15,9 +19,8 @@ gulp.task('clean', function(){
 
 
 gulp.task('copy', ['clean'], function(){
-    gulp.src([
-            'src/components/**/*',
-            'src/js/**/*'], 
+    return gulp.src(
+        ['src/components/**/*'], 
             {"base": "src"})
         .pipe(gulp.dest('dist'))
 })
@@ -28,10 +31,11 @@ gulp.task('copy', ['clean'], function(){
 // Task para processamento do SASS
 gulp.task('sass', function(){
     // Origem
-    gulp.src('./src/sass/**/*.scss')
+    return gulp.src('./src/sass/**/*.scss')
         // Tubulacao
         .pipe(sass())
         .pipe(autoprefixer())
+        .pipe(cssnano())
         // Destino
         .pipe(gulp.dest('./dist/css/'));
 })
@@ -41,7 +45,10 @@ gulp.task('sass', function(){
 
 // Task para include no header e footer
 gulp.task('html', function(){
-    return gulp.src('./src/**/*.html')
+    return gulp.src([
+            './src/**/*.html',
+            '!./src/inc/**'
+            ])
         .pipe(include())
         .pipe(gulp.dest('./dist/'));
 })
@@ -62,10 +69,31 @@ gulp.task('imagemin', function(){
 })
 
 
+gulp.task('build-js', function(){
+    return gulp.src('src/js/**/*')
+        .pipe(concat('app.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('./dist/js/'))
+})
+
+gulp.task('svgmin', function(){
+    return gulp.src(['./src/inc/icons/*.svg', '!./src/inc/icons/*.min.svg'])
+        .pipe(imagemin())
+        .pipe(rename({
+            suffix: '.min'
+        }))
+        .pipe(gulp.dest('./src/inc/icons/'))
+})
+
+
+gulp.task('default', ['copy'], function(){
+    gulp.start('uncss', 'imagemin', 'sass', 'build-js')
+})
+
 //==== BROWSER SYNC ====//
 
 // Task para iniciar um servidor localhost
-gulp.task('server', ['uncss', 'imagemin', 'sass', 'copy'], function(){
+gulp.task('server', function(){
     // Modulo.metodo
     browserSync.init({
         // Objeto
@@ -81,6 +109,8 @@ gulp.task('server', ['uncss', 'imagemin', 'sass', 'copy'], function(){
     // Monitoramento do SASS
     gulp.watch('./src/sass/**/*.scss', ['sass'])
     gulp.watch('./src/**/*.html', ['html'])
+    gulp.watch('./src/js/**/*', ['build-js'])
+    gulp.watch(['./src/inc/icons/*.svg', '!./src/inc/icons/*.min.svg'], ['svgmin'])
 })
 
 // Task para monitoramento do SASS
