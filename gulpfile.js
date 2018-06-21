@@ -13,7 +13,8 @@ var gulp = require('gulp'),
 
 //==== GULP CLEAN ====//
 gulp.task('clean', function(){
-    return gulp.src('dist')
+    return gulp.src([
+        './dist/**/*', '!./dist/.git/**/*'])
         .pipe(clean());
 })
 
