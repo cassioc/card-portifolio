@@ -30,7 +30,8 @@
     "preinstall": "mkdirp src/components/bootstrap/ src/components/font-awesome/",
     "postinstall": "cp -r node_modules/bootstrap/dist src/components/bootstrap/ && cp -r node_modules/font-awesome/css src/components/font-awesome/ && cp -r node_modules/font-awesome/fonts src/components/font-awesome/",
     "gulp": "gulp",
-    "nodesass": "node-sass"
+    "nodesass": "node-sass",
+    "deploy": "cd dist/ && git add . && git commit -m 'Deploy at Heroku' && git push heroku master && cd .."
   },
   "author": "Cassio Castro",
   "license": "ISC"
