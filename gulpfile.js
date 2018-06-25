@@ -14,7 +14,12 @@ var gulp = require('gulp'),
 //==== GULP CLEAN ====//
 gulp.task('clean', function(){
     return gulp.src([
-        './dist/**/*', '!./dist/.git/**/*'])
+        './dist/*.html',
+        './dist/components/',
+        './dist/css/',
+        './dist/img/',
+        './dist/js/',
+        '!./dist/.git/**/*'])
         .pipe(clean());
 })
 
